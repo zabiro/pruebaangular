@@ -1,0 +1,229 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"Valetest": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/valetest",
+			"sourceRoot": "projects/valetest/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/valetest",
+						"index": "projects/valetest/src/index.html",
+						"main": "projects/valetest/src/main.ts",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/valetest/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/valetest/src/favicon.ico",
+							"projects/valetest/src/assets"
+						],
+						"styles": [
+							"projects/valetest/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
+						],
+						"scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
+						"extraWebpackConfig": "projects/valetest/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/valetest/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "Valetest:build:production",
+							"extraWebpackConfig": "projects/valetest/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "Valetest:build:development",
+              "extraWebpackConfig": "projects/valetest/webpack.prod.config.js"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/valetest/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "Valetest:build",
+						"extraWebpackConfig": "projects/valetest/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/valetest/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/valetest/src/favicon.ico",
+							"projects/valetest/src/assets"
+						],
+						"styles": [
+							"projects/valetest/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
+						],
+						"scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
+					}
+				}
+			}
+		},
+		"LookAndFeel": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/look-and-feel",
+			"sourceRoot": "projects/look-and-feel/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/look-and-feel",
+						"index": "projects/look-and-feel/src/index.html",
+						"main": "projects/look-and-feel/src/main.ts",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/look-and-feel/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/look-and-feel/src/favicon.ico",
+							"projects/look-and-feel/src/assets"
+						],
+						"styles": [
+							"projects/look-and-feel/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
+						],
+						"scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
+						"extraWebpackConfig": "projects/look-and-feel/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/look-and-feel/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "LookAndFeel:build:production",
+							"extraWebpackConfig": "projects/look-and-feel/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "LookAndFeel:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4201,
+						"publicHost": "http://localhost:4201",
+						"extraWebpackConfig": "projects/look-and-feel/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "LookAndFeel:build",
+						"extraWebpackConfig": "projects/look-and-feel/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/look-and-feel/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/look-and-feel/src/favicon.ico",
+							"projects/look-and-feel/src/assets"
+						],
+						"styles": [
+							"projects/look-and-feel/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
+						],
+						"scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
+					}
+				}
+			}
+		}
+	},
+	"cli": {
+		"analytics": "d961a2ba-68f2-40e2-8ed1-84eb5404130e"
+	}
+}

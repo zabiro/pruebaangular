@@ -1,0 +1,9 @@
+<form (ngSubmit)="saveColors()">
+    <label>Color primario:</label>
+    <input type="color" [(ngModel)]="colors.primaryColor" name="primaryColor" ><br>
+    <label>Color secundario:</label>
+    <input type="color" [(ngModel)]="colors.secondaryColor" name="secondaryColor" ><br>
+    <label>Color terciario:</label>
+    <input type="color" [(ngModel)]="colors.tertiaryColor" name="tertiaryColor" ><br>
+    <button type="submit">Guardar</button>
+  </form>
